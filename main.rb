@@ -1,3 +1,5 @@
 # frozen_string_literal: true
 
-puts 'Hello World!'
+require_relative 'lib/mastermind_game'
+
+MastermindGame.new
