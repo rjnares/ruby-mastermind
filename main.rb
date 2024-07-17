@@ -2,4 +2,4 @@
 
 require_relative 'lib/mastermind_game'
 
-MastermindGame.new
+MastermindGame.new.play
