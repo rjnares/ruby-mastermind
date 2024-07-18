@@ -20,6 +20,7 @@ class MastermindGame
 
     until @game_over
       display_current_turn_text
+      next_guess
       @game_over = true
     end
 
