@@ -52,21 +52,4 @@ module GameIO
 
     TEXT
   end
-
-  def next_guess
-    loop do
-      display_next_guess_text
-      input = gets.chomp.downcase
-      return input if valid_input?(input)
-
-      display_invalid_guess_warning
-    end
-  end
-
-  def valid_input?(input)
-    return false unless input.length == 4
-    return true if input == 'exit'
-
-    input.split('').all? { |digit| digit.to_i.between?(1, 6) }
-  end
 end

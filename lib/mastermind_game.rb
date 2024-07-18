@@ -20,7 +20,7 @@ class MastermindGame
 
     until @game_over
       display_current_turn_text
-      guess = next_guess
+      guess = @code_breaker.next_guess
       if guess == 'exit'
         display_game_exit_text
         @game_over = true
