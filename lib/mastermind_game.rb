@@ -24,6 +24,8 @@ class MastermindGame
       if guess == 'exit'
         display_game_exit_text
         @game_over = true
+      else
+        @code_maker.get_clues(guess)
       end
     end
 
