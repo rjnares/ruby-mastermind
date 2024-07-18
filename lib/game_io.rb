@@ -56,7 +56,7 @@ module GameIO
   def next_guess
     loop do
       display_next_guess_text
-      input = gets.chomp
+      input = gets.chomp.downcase
       return input if valid_input?(input)
 
       display_invalid_guess_warning
