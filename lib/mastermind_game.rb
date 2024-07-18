@@ -20,8 +20,11 @@ class MastermindGame
 
     until @game_over
       display_current_turn_text
-      next_guess
-      @game_over = true
+      guess = next_guess
+      if guess == 'exit'
+        display_game_exit_text
+        @game_over = true
+      end
     end
 
     display_game_over_text

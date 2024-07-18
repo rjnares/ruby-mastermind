@@ -45,6 +45,14 @@ module GameIO
     puts 'Invalid input given, please try again...'.colorize(color: :red, mode: :bold)
   end
 
+  def display_game_exit_text
+    puts <<~TEXT
+
+      Exiting game...thank you for playing!
+
+    TEXT
+  end
+
   def next_guess
     loop do
       display_next_guess_text
