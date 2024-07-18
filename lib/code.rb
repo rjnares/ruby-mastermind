@@ -2,7 +2,7 @@
 
 # Creates a mastermind game code consisting of four values
 class Code
-  def initialize
-    puts 'I am a code!'
+  def initialize(num_array)
+    @num_array = num_array
   end
 end
