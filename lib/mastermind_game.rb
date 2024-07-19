@@ -14,6 +14,7 @@ class MastermindGame
     @code_breaker = CodeBreaker.new
 
     display_welcome_and_instructions_text
+    role = user_role
   end
 
   def play

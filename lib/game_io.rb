@@ -15,6 +15,21 @@ module GameIO
   RED_CLUE = "\u25CF".encode.colorize(:red)
   WHITE_CLUE = "\u25CF".encode.colorize(:white)
 
+  def display_role_select_text
+    puts
+    print "Type '1' to play as the code maker, '2' to play as the code breaker, or 'exit' to exit the game: "
+  end
+
+  def user_role
+    loop do
+      display_role_select_text
+      role = gets.chomp.downcase
+      return role if %w[1 2 exit].include?(role)
+
+      display_invalid_input_warning
+    end
+  end
+
   def display_example
     puts <<~TEXT
 
