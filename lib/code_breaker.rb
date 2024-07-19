@@ -11,7 +11,7 @@ class CodeBreaker
       input = gets.chomp.downcase
       return input if valid_input?(input)
 
-      display_invalid_guess_warning
+      display_invalid_input_warning
     end
   end
 

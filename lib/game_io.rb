@@ -80,7 +80,7 @@ module GameIO
     print "Type a 4-digit guess consisting of integers 1-6 (e.g. '1136') or enter 'exit' to exit the game: "
   end
 
-  def display_invalid_guess_warning
+  def display_invalid_input_warning
     puts
     puts 'Invalid input given, please try again...'.colorize(color: :red, mode: :bold)
   end
