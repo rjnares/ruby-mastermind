@@ -9,12 +9,12 @@ class MastermindGame
   include GameIO
 
   def initialize
-    @turn = 1
-    @code_maker = CodeMaker.new
-    @code_breaker = CodeBreaker.new
-
     display_welcome_and_instructions_text
     role = user_role
+
+    @turn = 1
+    @code_maker = CodeMaker.new(role == '1')
+    @code_breaker = CodeBreaker.new(role == '2')
   end
 
   def play

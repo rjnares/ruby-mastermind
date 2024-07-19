@@ -17,7 +17,7 @@ module GameIO
 
   def display_role_select_text
     puts
-    print "Type '1' to play as the code maker, '2' to play as the code breaker, or 'exit' to exit the game: "
+    print "Type '1' to play as the code maker or '2' to play as the code breaker: "
   end
 
   def user_role
@@ -93,6 +93,11 @@ module GameIO
   def display_next_guess_text
     puts
     print "Type a 4-digit guess consisting of integers 1-6 (e.g. '1136') or enter 'exit' to exit the game: "
+  end
+
+  def display_create_secret_code_text
+    puts
+    print "Type a 4-digit secret code consisting of integers 1-6 (e.g. '1136'): "
   end
 
   def display_invalid_input_warning

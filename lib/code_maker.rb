@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
 require_relative 'code'
+require_relative 'game_io'
 
 # Creates a code maker responsible for creating a secret code and giving feedback after every guess
 class CodeMaker
-  def initialize
-    @secret_code = Code.new(generate_random_num_array)
+  include GameIO
+
+  def initialize(human_role)
+    @human_role = human_role
+    @secret_code = create_new_secret_code
   end
 
   def get_clues(guess)
@@ -19,8 +23,30 @@ class CodeMaker
 
   private
 
-  def generate_random_num_array
-    Array.new(4) { [1, 2, 3, 4, 5, 6].sample }
+  def create_new_secret_code
+    cpu_create_new_secret_code unless @human_role
+    human_create_new_secret_code if @human_role
+  end
+
+  def cpu_create_new_secret_code
+    random_num_array = Array.new(4) { [1, 2, 3, 4, 5, 6].sample }
+    Code.new(random_num_array)
+  end
+
+  def human_create_new_secret_code
+    loop do
+      display_create_secret_code_text
+      input = gets.chomp.downcase
+      return Code.new(string_to_num_array(input)) if valid_input?(input)
+
+      display_invalid_input_warning
+    end
+  end
+
+  def valid_input?(input)
+    return false unless input.length == 4
+
+    input.split('').all? { |digit| digit.to_i.between?(1, 6) }
   end
 
   def string_to_num_array(string)
