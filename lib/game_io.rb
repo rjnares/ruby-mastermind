@@ -65,12 +65,21 @@ module GameIO
     TEXT
   end
 
+  def display_game_win_text
+    puts <<~TEXT
+
+      You broke the code! Game over, you win!
+
+    TEXT
+  end
+
   def display_next_guess_and_clues(guess, clues)
     puts
     print 'Guessed code: '
     print_guess(guess)
     print '  Clues: '
     print_clues(clues)
+    puts
   end
 
   def print_guess(guess)

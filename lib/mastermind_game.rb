@@ -21,12 +21,19 @@ class MastermindGame
     until @game_over
       display_current_turn_text
       guess = @code_breaker.next_guess
+
       if guess == 'exit'
         display_game_exit_text
         @game_over = true
-      else
-        clues = @code_maker.get_clues(guess)
-        display_next_guess_and_clues(guess, clues)
+        next
+      end
+
+      clues = @code_maker.get_clues(guess)
+      display_next_guess_and_clues(guess, clues)
+
+      if clues.length == 4 && clues.all?
+        display_game_win_text
+        @game_over = true
       end
     end
 
