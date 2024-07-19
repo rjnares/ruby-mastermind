@@ -5,10 +5,6 @@ require_relative 'game_io'
 class CodeBreaker
   include GameIO
 
-  def initialize
-    puts 'I am the code breaker!'
-  end
-
   def next_guess
     loop do
       display_next_guess_text
