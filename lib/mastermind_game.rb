@@ -16,8 +16,7 @@ class MastermindGame
   end
 
   def play
-    display_welcome_text
-    display_instructions_text
+    display_welcome_and_instructions_text
 
     until @game_over
       display_current_turn_text(@turn)

@@ -15,25 +15,50 @@ module GameIO
   RED_CLUE = "\u25CF".encode.colorize(:red)
   WHITE_CLUE = "\u25CF".encode.colorize(:white)
 
-  def display_welcome_text
+  def display_welcome_and_instructions_text
     puts <<~TEXT
 
-      WELCOME_TEXT_PLACEHOLDER
+      #{'WELCOME TO MY MASTERMIND GAME BUILT WITH RUBY!'.colorize(mode: :bold)}
+
+      This is a 1-player game against the cpu where you can play as the #{'code maker'.underline} or #{'code breaker'.underline}.
+      There are 6 different options to choose from when creating a code:
 
     TEXT
-  end
 
-  def display_instructions_text
+    print_guess('123456')
+
     puts <<~TEXT
 
-      INSTRUCTIONS_TEXT_PLACEHOLDER
 
+      The code maker will choose 4 of these options to create a #{'secret code'.underline}. For example:
+
+    TEXT
+
+    print_guess('1136')
+
+    puts <<~TEXT
+
+
+      As you can see, there can be #{'more than one'.underline} of the same option in a single code.
+      In order to win, the code breaker must guess the secret code in 12 turns or less.
+      After each guess, the code breaker will be given a set of up to 4 red or white clues:
+
+       #{RED_CLUE} A red clue means you have placed a correct option in the correct location
+       #{WHITE_CLUE} A white clue means you have placed a correct option in the wrong location
+
+      To continue the above example, using the secret code '1136', a guess of '1326' would yield these clues:
+
+       #{RED_CLUE} A red clue because the '1' is in the correct location
+       #{RED_CLUE} A red clue because the '6' is in the correct location
+       #{WHITE_CLUE} A white clue because the '3' is in the wrong location
+
+      Enough talking, let's play!
     TEXT
   end
 
   def display_current_turn_text(turn)
     puts
-    puts "TURN #{turn}".colorize(mode: :bold).underline
+    puts "TURN #{turn}".colorize(mode: :bold)
   end
 
   def display_game_lose_text(secret_code)
