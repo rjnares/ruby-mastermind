@@ -10,22 +10,20 @@ class MastermindGame
 
   def initialize
     @turn = 1
-    @game_over = false
     @code_maker = CodeMaker.new
     @code_breaker = CodeBreaker.new
+
+    display_welcome_and_instructions_text
   end
 
   def play
-    display_welcome_and_instructions_text
-
-    until @game_over
+    while @turn.between?(1, 12)
       display_current_turn_text(@turn)
       guess = @code_breaker.next_guess
 
       if guess == 'exit'
         display_game_exit_text
-        @game_over = true
-        next
+        return
       end
 
       clues = @code_maker.get_clues(guess)
@@ -33,15 +31,12 @@ class MastermindGame
 
       if clues.length == 4 && clues.all?
         display_game_win_text
-        @game_over = true
+        return
       end
 
       @turn += 1
-
-      if @turn > 12
-        display_game_lose_text(@code_maker.secret_code_as_string)
-        @game_over = true
-      end
     end
+
+    display_game_lose_text(@code_maker.secret_code_as_string)
   end
 end

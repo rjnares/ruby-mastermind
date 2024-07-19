@@ -67,6 +67,7 @@ module GameIO
     print 'Here is the code you were trying to break:'
     print_guess(secret_code)
     puts
+    puts
   end
 
   def display_next_guess_text
