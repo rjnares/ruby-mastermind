@@ -21,22 +21,30 @@ class MastermindGame
       display_current_turn_text(@turn)
       guess = @code_breaker.next_guess
 
-      if guess == 'exit'
-        display_game_exit_text
-        return
-      end
+      return if early_exit?(guess)
 
       clues = @code_maker.get_clues(guess)
       display_next_guess_and_clues(guess, clues)
 
-      if clues.length == 4 && clues.all?
-        display_game_win_text
-        return
-      end
+      return if game_win?(clues)
 
       @turn += 1
     end
 
     display_game_lose_text(@code_maker.secret_code_as_string)
+  end
+
+  private
+
+  def early_exit?(input)
+    early_exit = input == 'exit'
+    display_game_exit_text if early_exit
+    early_exit
+  end
+
+  def game_win?(clues)
+    game_win = clues.length == 4 && clues.all?
+    display_game_win_text if game_win
+    game_win
   end
 end
