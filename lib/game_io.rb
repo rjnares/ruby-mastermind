@@ -3,6 +3,18 @@
 require 'colorize'
 # Module containing game input/output utility methods
 module GameIO
+  DIGIT_TO_BG_COLOR_MAP = {
+    '1' => :red,
+    '2' => :green,
+    '3' => :yellow,
+    '4' => :blue,
+    '5' => :magenta,
+    '6' => :cyan
+  }.freeze
+
+  RED_CLUE = "\u25CF".encode.colorize(:red)
+  WHITE_CLUE = "\u25CF".encode.colorize(:white)
+
   def display_welcome_text
     puts <<~TEXT
 
@@ -51,5 +63,26 @@ module GameIO
       Exiting game...thank you for playing!
 
     TEXT
+  end
+
+  def display_next_guess_and_clues(guess, clues)
+    puts
+    print 'Guessed code: '
+    print_guess(guess)
+    print '  Clues: '
+    print_clues(clues)
+  end
+
+  def print_guess(guess)
+    guess.split('').each do |digit|
+      print "  #{digit}  ".colorize(background: DIGIT_TO_BG_COLOR_MAP[digit])
+    end
+  end
+
+  def print_clues(clues)
+    clues.each do |clue|
+      clue_to_print = clue ? RED_CLUE : WHITE_CLUE
+      print " #{clue_to_print} "
+    end
   end
 end
