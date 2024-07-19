@@ -75,7 +75,8 @@ module GameIO
 
   def print_guess(guess)
     guess.split('').each do |digit|
-      print "  #{digit}  ".colorize(background: DIGIT_TO_BG_COLOR_MAP[digit])
+      colored_digit = " #{digit} ".colorize(background: DIGIT_TO_BG_COLOR_MAP[digit])
+      print " #{colored_digit} "
     end
   end
 
