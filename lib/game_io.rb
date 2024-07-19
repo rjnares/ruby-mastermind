@@ -15,18 +15,7 @@ module GameIO
   RED_CLUE = "\u25CF".encode.colorize(:red)
   WHITE_CLUE = "\u25CF".encode.colorize(:white)
 
-  def display_welcome_and_instructions_text
-    puts <<~TEXT
-
-      #{'WELCOME TO MY MASTERMIND GAME BUILT WITH RUBY!'.colorize(mode: :bold)}
-
-      This is a 1-player game against the cpu where you can play as the #{'code maker'.underline} or #{'code breaker'.underline}.
-      There are 6 different options to choose from when creating a code:
-
-    TEXT
-
-    print_guess('123456')
-
+  def display_example
     puts <<~TEXT
 
 
@@ -52,8 +41,24 @@ module GameIO
        #{RED_CLUE} A red clue because the '6' is in the correct location
        #{WHITE_CLUE} A white clue because the '3' is in the wrong location
 
-      Enough talking, let's play!
     TEXT
+  end
+
+  def display_welcome_and_instructions_text
+    puts <<~TEXT
+
+      #{'WELCOME TO MY MASTERMIND GAME BUILT WITH RUBY!'.colorize(mode: :bold)}
+
+      This is a 1-player game against the cpu where you can play as the #{'code maker'.underline} or #{'code breaker'.underline}.
+      There are 6 different options to choose from when creating a code:
+
+    TEXT
+
+    print_guess('123456')
+
+    display_example
+
+    puts "Enough talking, let's play!"
   end
 
   def display_current_turn_text(turn)
