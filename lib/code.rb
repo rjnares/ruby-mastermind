@@ -13,6 +13,10 @@ class Code
     exact_match_clues + partial_match_clues
   end
 
+  def to_s
+    @num_array.join
+  end
+
   protected
 
   attr_reader :num_array

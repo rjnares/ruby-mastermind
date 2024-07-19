@@ -31,20 +31,17 @@ module GameIO
     TEXT
   end
 
-  def display_current_turn_text
-    puts <<~TEXT
-
-      CURRENT_TURN_TEXT_PLACEHOLDER
-
-    TEXT
+  def display_current_turn_text(turn)
+    puts
+    puts "TURN #{turn}".colorize(mode: :bold).underline
   end
 
-  def display_game_over_text
-    puts <<~TEXT
-
-      GAME_OVER_TEXT_PLACEHOLDER
-
-    TEXT
+  def display_game_lose_text(secret_code)
+    puts
+    puts 'Your 12 turns are up! Game over, you lose!'
+    print 'Here is the code you were trying to break:'
+    print_guess(secret_code)
+    puts
   end
 
   def display_next_guess_text

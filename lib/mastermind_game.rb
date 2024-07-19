@@ -9,6 +9,7 @@ class MastermindGame
   include GameIO
 
   def initialize
+    @turn = 1
     @game_over = false
     @code_maker = CodeMaker.new
     @code_breaker = CodeBreaker.new
@@ -19,7 +20,7 @@ class MastermindGame
     display_instructions_text
 
     until @game_over
-      display_current_turn_text
+      display_current_turn_text(@turn)
       guess = @code_breaker.next_guess
 
       if guess == 'exit'
@@ -35,8 +36,13 @@ class MastermindGame
         display_game_win_text
         @game_over = true
       end
-    end
 
-    display_game_over_text
+      @turn += 1
+
+      if @turn > 12
+        display_game_lose_text(@code_maker.secret_code_as_string)
+        @game_over = true
+      end
+    end
   end
 end

@@ -13,6 +13,10 @@ class CodeMaker
     @secret_code.create_clues_from(guessed_code)
   end
 
+  def secret_code_as_string
+    @secret_code.to_s
+  end
+
   private
 
   def generate_random_num_array
