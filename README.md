@@ -48,3 +48,7 @@ There are still a lot of "Ruby-isms" that I am trying to drill into my head. The
 #### Project Extensions
 
 One area where I feel I could significantly improve the project, outside of the OOD aspect, is with the cpu intelligence when it is the code breaker. As the project currently stands, the cpu will simply generate a random guess each turn without consideration for the clues given. Due to this implementation, it is very unlikely that the cpu will ever guess the code within the 12 turns. Perhaps some day I will revisit this and improve my solution.
+
+## Live View
+
+Click [here](https://replit.com/@robertonares/ruby-mastermind) to open a repl for this project and click the `Run` button to execute the application.
