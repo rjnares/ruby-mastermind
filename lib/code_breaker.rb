@@ -10,8 +10,9 @@ class CodeBreaker
   end
 
   def next_guess
-    run_human_next_guess if @human_role
-    run_cpu_next_guess unless @human_role
+    return run_human_next_guess if @human_role
+
+    run_cpu_next_guess
   end
 
   private

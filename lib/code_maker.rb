@@ -24,8 +24,9 @@ class CodeMaker
   private
 
   def create_new_secret_code
-    cpu_create_new_secret_code unless @human_role
-    human_create_new_secret_code if @human_role
+    return human_create_new_secret_code if @human_role
+
+    cpu_create_new_secret_code
   end
 
   def cpu_create_new_secret_code
